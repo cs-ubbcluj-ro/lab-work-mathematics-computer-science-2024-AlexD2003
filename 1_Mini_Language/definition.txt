@@ -1,0 +1,69 @@
+Statement: Considering a small programming language (that we shall call mini-langauge), you have to write a scanner (lexical analyzer). 
+
+For this lab, I will try to use C++ as the language I lookup to.
+
+-- BNF
+
+Language definition:
+
+    Uppercase letters: A-Z
+    Lowercase letters: a-z
+    Digits: 0-9
+
+Special characters:
+
+    Operators: + - * / = == != < <= > >= && || !
+    Assignment: =
+    Separators: ; , () {} [] whitespace
+    Quotes for strings: "string"
+
+Lexic:
+
+    Keywords/Reserved words: int, float, char, if, else, while, for, return, class,void, const, new, delete, true, false
+    Basic data types:  int, float, char
+    Control statements: if, else, while, for, return 
+    Booleans: true, false
+
+Identifiers:
+
+    identifier ::= letter | letter{digit}{letter}
+    letter ::= "A" | "B" | ... | "Z" | "a" | "b" | ... | "z"
+    digit ::= "0" | "1" | ... | "9"
+
+Constants:
+
+    int_const ::= [ "+" | "-" ] digit { digit }
+    char_const ::= "'" ( letter | digit ) "'"
+    string_const ::= '"' { char } '"'
+    char ::= letter | digit | special_character
+    special_character ::= "+" | "-" | "*" | "/" | ...
+
+Statements:
+
+    program ::= "class" IDENTIFIER "{" decllist stmtlist "}"
+    decllist ::= declaration | declaration ";" decllist
+    declaration ::= type identifier_list
+    type ::= "int" | "float" | "char" | "bool" | user_defined_type
+    identifier_list ::= IDENTIFIER | IDENTIFIER "," identifier_list
+    user_defined_type ::= "class" IDENTIFIER "{" decllist "}"
+    stmtlist ::= stmt | stmt ";" stmtlist
+    stmt ::= simplstmt | structstmt
+    simplstmt ::= assignstmt | iostmt | returnstmt
+    structstmt ::= ifstmt | whilestmt | forstmt | cmpdstmt
+    cmpdstmt ::= "{" stmtlist "}"
+    assignstmt ::= IDENTIFIER "=" expression
+    iostmt ::= "read" "(" IDENTIFIER ")" | "write" "(" expression ")"
+    ifstmt ::= "if" "(" condition ")" stmt [ "else" stmt ]
+    whilestmt ::= "while" "(" condition ")" stmt
+    forstmt ::= "for" "(" assignstmt ";" condition ";" assignstmt ")" stmt
+    returnstmt ::= "return" [ expression ]
+    expression ::= expression "+" term | expression "-" term | term
+    term ::= term "*" factor | term "/" factor | factor
+    factor ::= IDENTIFIER | int_const | char_const | string_const | "(" expression ")"
+    condition ::= expression RELATION expression
+    RELATION ::= "==" | "!=" | "<" | "<=" | ">" | ">="
+
+
+
+
+

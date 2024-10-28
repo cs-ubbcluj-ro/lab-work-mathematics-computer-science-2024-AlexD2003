@@ -1,0 +1,30 @@
+class PrimeFinder {
+    int k; 
+    bool isPrime(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i * i <= n; i = i + 1) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+    void printPrimes() {
+        int n = 2; 
+        while (n < k) {
+            if (isPrime(n)) write(n); 
+            n = n + 1;
+        }
+    }
+}
+
+class Main {
+    void main() {
+        PrimeFinder finder;
+        int k;
+        write("Enter the value of k: ");
+        read(k);
+        
+        finder.k = k;
+        finder.printPrimes();
+    }
+}
