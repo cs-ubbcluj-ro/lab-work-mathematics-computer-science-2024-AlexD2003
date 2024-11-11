@@ -56,12 +56,12 @@ int main(int argc, char **argv) {
     }
 
     yylex();
-    print_symbol_table(); 
+    print_symbol_table();  
     return 0;
 }
 
 void add_symbol(const char *name) {
-    if (symbol_count >= MAX_SYMBOLS) return; // Prevent overflow
+    if (symbol_count >= MAX_SYMBOLS) return; 
     if (lookup_symbol(name) == -1) {
         symbol_table[symbol_count].name = strdup(name);
         symbol_table[symbol_count].index = symbol_count;

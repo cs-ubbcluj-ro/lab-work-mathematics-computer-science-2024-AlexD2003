@@ -2,7 +2,7 @@ int main() {
     int a = 10;
     int b = 20;
     int c = a + b#; 
-    char d = 'A;     
+ @   char d = 'A;     
     float f = 3.14;
     if (f > 0) {
         return true;
