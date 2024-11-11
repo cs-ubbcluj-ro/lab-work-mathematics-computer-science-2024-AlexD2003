@@ -52,12 +52,12 @@ Statements:
     <structstmt> ::= <ifstmt> | <whilestmt> | <forstmt> | <cmpdstmt>
     <cmpdstmt> ::= "{" <stmtlist> "}"
     <assignstmt> ::= <identifier> "=" <expression>
-    <iostmt> ::= "read" "(" <identifier> ")" | "write" "(" <expression> ")"
+    <iostmt> ::= "cout<<" "(" <identifier> ")" | "cin>>" "(" <expression> ")"
     <ifstmt> ::= "if" "(" <condition> ")" <stmt> ["else" <stmt>]
     <whilestmt> ::= "while" "(" <condition> ")" <stmt>
     <returnstmt> ::= "return" [<expression>]
     <expression> ::= <expression> "+" <term> | <expression> "-" <term> | <term>
-    <term> ::= <term> "*" <factor> | <term> "/" <factor> | <factor>
+    <term> ::= <term> "*" <factor> | <term> "/" <factor> | <factor> | <term> "%" <factor>
     <factor> ::= <identifier> | <int_const> | <char_const> | <string_const> | "(" <expression> ")"
     <condition> ::= <expression> <RELATION> <expression>
     <RELATION> ::= "==" | "!=" | "<" | "<=" | ">" | ">="
