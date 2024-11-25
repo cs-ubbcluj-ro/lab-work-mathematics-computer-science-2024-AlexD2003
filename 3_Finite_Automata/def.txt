@@ -1,0 +1,14 @@
+<FA> ::= <states> <alphabet> <transitions> <initial_state> <final_states>
+
+<states> ::= "States:" {<state> ","} <state>
+<state> ::= <identifier>
+
+<alphabet> ::= "Alphabet:" {<symbol> ","} <symbol>
+<symbol> ::= <letter> | <digit> | <special_character>
+
+<transitions> ::= "Transitions:" {<transition>}
+<transition> ::= "(" <state> "," <symbol> "," <state> ")"
+
+<initial_state> ::= "Initial:" <state>
+
+<final_states> ::= "Finals:" {<state> ","} <state>
