@@ -1,11 +1,28 @@
-
-
 # Start symbol
 program -> "VAR" declist ";" cmpdstmt "."
 
 # Statements
+stmt -> simplstmt
+       | structstmt
+
+simplstmt -> assignstmt
+           | iostmt
+           | returnstmt
+
+structstmt -> ifstmt
+            | whilestmt
+            | forstmt
+            | cmpdstmt
+
+# If statement
 ifstmt -> "IF" condition "THEN" stmt
          | "IF" condition "THEN" stmt "ELSE" stmt
+
+# While loop
+whilestmt -> "WHILE" "(" condition ")" stmt
+
+# For loop
+forstmt -> "FOR" "(" assignstmt ";" condition ";" assignstmt ")" stmt
 
 # Compound statements
 cmpdstmt -> "{" stmtlist "}"
@@ -26,6 +43,16 @@ identifier_list -> identifier
                  | identifier "," identifier_list
 
 user_defined_type -> "class" identifier "{" declist "}"
+
+# Input/Output statements
+iostmt -> "COUT" "<<" "(" identifier ")"
+        | "CIN" ">>" "(" identifier ")"
+
+# Return statement
+returnstmt -> "RETURN" [expression]
+
+# Assignments
+assignstmt -> identifier "=" expression
 
 # Expressions
 expression -> expression "+" term
@@ -60,4 +87,3 @@ char_const -> "'" (letter | digit) "'"
 string_const -> quote {char} quote
 char -> letter | digit | special_character
 special_character -> "+" | "-" | "*" | "/" | ...
-

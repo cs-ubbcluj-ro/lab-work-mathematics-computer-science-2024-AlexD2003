@@ -71,7 +71,7 @@ int main(int argc, char *argv[]) {
                 char symbol;
                 while (ss >> symbol) {
                     alphabet.insert(symbol);
-                    ss.ignore(1); // Ignore commas
+                    ss.ignore(1); 
                 }
             } else if (line.find("Transitions:") == 0) {
                 while (std::getline(file, line) && line.find("Initial:") != 0 && line.find("Finals:") != 0) {
