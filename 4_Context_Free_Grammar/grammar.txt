@@ -1,0 +1,63 @@
+
+
+# Start symbol
+program -> "VAR" declist ";" cmpdstmt "."
+
+# Statements
+ifstmt -> "IF" condition "THEN" stmt
+         | "IF" condition "THEN" stmt "ELSE" stmt
+
+# Compound statements
+cmpdstmt -> "{" stmtlist "}"
+
+# Statement list
+stmtlist -> stmt
+          | stmt ";" stmtlist
+
+# Declarations
+declist -> declaration
+         | declaration ";" declist
+
+declaration -> type identifier_list
+
+type -> "int" | "float" | "char" | "void" | "bool" | user_defined_type
+
+identifier_list -> identifier
+                 | identifier "," identifier_list
+
+user_defined_type -> "class" identifier "{" declist "}"
+
+# Expressions
+expression -> expression "+" term
+            | expression "-" term
+            | term
+
+term -> term "*" factor
+      | term "/" factor
+      | term "%" factor
+      | factor
+
+factor -> identifier
+        | int_const
+        | char_const
+        | string_const
+        | "(" expression ")"
+
+# Conditions
+condition -> expression RELATION expression
+RELATION -> "==" | "!=" | "<" | "<=" | ">" | ">="
+
+# Other rules
+identifier -> letter {letter | digit}
+letter -> uppercase | lowercase
+uppercase -> "A" | "B" | ... | "Z"
+lowercase -> "a" | "b" | ... | "z"
+digit -> "0" | "1" | ... | "9"
+
+# Constants
+int_const -> ["+" | "-"] digit {digit}
+char_const -> "'" (letter | digit) "'"
+string_const -> quote {char} quote
+char -> letter | digit | special_character
+special_character -> "+" | "-" | "*" | "/" | ...
+
