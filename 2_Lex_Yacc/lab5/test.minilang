@@ -1,0 +1,13 @@
+class Example {
+    int x;
+    float y;
+
+    void main() {
+        x = 10;
+        if (x > 5) {
+            y = 20.5;
+        } else {
+            y = 0;
+        }
+    }
+}
